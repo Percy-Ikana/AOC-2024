@@ -6,11 +6,8 @@ from os.path import join
 
 def partOne(data):
     data = data[0]
-    hdd = []
-    numLocations = []
-    emptyLocations = []
-    fileId = 0
-    index = 0
+    hdd, numLocations, emptyLocations = [], [], []
+    fileId, index = 0, 0
     #freespace is -1
     for elem in range(len(data)):
         if int(elem) % 2 == 0:
@@ -32,22 +29,13 @@ def partOne(data):
         hdd[numLocations[0]] = -1
         emptyLocations.append(numLocations.pop(0))
         numLocations.append(emptyLocations.pop(0))
-    emptyLocations = sorted(emptyLocations)
-    numLocations = sorted(numLocations)
     
-    checksum = 0
-    for index in numLocations:
-        checksum += index*hdd[index]
-
-    return checksum
+    return sum([segment*hdd[segment] for segment in numLocations])
 
 def partTwo(data):
     data = data[0]
-    hdd = []
-    numRanges = []
-    emptyRanges = []
-    fileId = 0
-    index = 0
+    hdd, numRanges, emptyRanges = [], [], []
+    fileId, index = 0, 0
     #freespace is -1
     for elem in range(len(data)):
         if int(elem) % 2 == 0:
@@ -66,7 +54,7 @@ def partTwo(data):
                 index+=1
     
     numRanges.reverse()
-    # so we have all full locations, and all empty locaitons, we should be able to move through the empty locaitons, filling them with the full ones, until the empty locations are past all the full ones?
+    
     for file in numRanges:
         #We start from the end, and look at ranges from the right
         for empty in emptyRanges:
@@ -81,7 +69,6 @@ def partTwo(data):
                 else:
                     break
     
-    #print(''.join([str(x) if x!= -1 else '.' for x in hdd]))
     return sum([segment*hdd[segment] if hdd[segment] != -1 else 0 for segment in range(len(hdd))])
 
 
