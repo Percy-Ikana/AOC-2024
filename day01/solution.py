@@ -22,19 +22,6 @@ def partTwo(data):
         splits = line.strip().split('   ')
         list1.append(int(splits[0]))
         list2.append(int(splits[1]))
-    '''
-    numDict = defaultdict(lambda: 0)
-    for num in list2:
-        numDict[num] +=1
-
-    return sum([x*numDict[x] for x in list1])
-    '''
-    '''
-    total = 0
-    for number in set(list1):
-        total += number * list1.count(number) * list2.count(number)
-    return (total)
-    '''
     list1 = Counter(list1)
     list2 = Counter(list2)
     total = 0

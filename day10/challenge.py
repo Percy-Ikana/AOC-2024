@@ -18,9 +18,8 @@ def main(fileName):
     start_time = time.time()
     
     print(partOne(data))
-    print("--- %s seconds ---" % (time.time() - start_time))
-    start_time = time.time()
     print(partTwo(data))
+    
     print("--- %s seconds ---" % (time.time() - start_time))
 
 
