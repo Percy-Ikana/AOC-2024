@@ -71,8 +71,6 @@ def partTwo(data):
     
     return sum([segment*hdd[segment] if hdd[segment] != -1 else 0 for segment in range(len(hdd))])
 
-
-
 def main(fileName):
     data = []
     with open(fileName, 'r') as file:
