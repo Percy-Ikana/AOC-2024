@@ -37,7 +37,6 @@ def partTwo(data):
     #so we can do operations once, and "apply" it to 
     #all copies of the same number
     stones = {int(stone):1 for stone in data[0].split()}
-
     for x in range(75):
         tempStones = defaultdict(lambda:0)
         
@@ -59,9 +58,7 @@ def partTwo(data):
                 continue
             
             tempStones[number*2024] += count
-            
         stones = tempStones
-
     return sum(stones.values())
 
 def main(fileName):

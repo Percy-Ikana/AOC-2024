@@ -7,13 +7,13 @@ import re
 
 def partOne(data):
     data = ''.join(data)
-    matches = re.findall("mul\([0-9]*,[0-9]*\)", data)
+    matches = re.findall("mul([0-9]*,[0-9]*)", data)
     products = [int(match[4:match.index(',')]) * int(match[match.index(',') + 1: match.index(')')])  for match in matches]
     return(sum(products))
 
 def partTwo(data):
     data = ''.join(data)
-    matches = re.findall("mul\([0-9]*,[0-9]*\)", data)
+    matches = re.findall("mul([0-9]*,[0-9]*)", data)
     
     matchIndexes = [data.find(x) for x in matches]
     doIndexs = [0] + [m.start() for m in re.finditer('do()', data)]
